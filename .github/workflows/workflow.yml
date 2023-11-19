@@ -60,7 +60,7 @@ jobs:
         uses: docker/build-push-action@v5.1.0
         with:
           push: true
-          tags: user/app:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/pipeline:latest
       
 
       
