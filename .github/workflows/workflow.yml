@@ -17,20 +17,35 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    name: Build and deploy code
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    # Sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Code checkout
+        # Checks-out your repository under $GITHUB_WORKSPACE, so job can access it
+        uses: actions/checkout@v3
+      - name: Java setup
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'oracle'
+          java-version: '21'
+          
+      - name: Unit tests
+        run: mvn -B test --file test_pom.xml
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Build app
+        run:
+         mvn clean
+         mvn -B package --file test_pom.xml
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v5.1.0
+        with:
+         context: .
+         dockerfile: Dockerfile
+         push: false
+         tags: 
+
+      
