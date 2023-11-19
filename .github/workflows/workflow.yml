@@ -1,0 +1,67 @@
+# Pipeline / workflow for ATU assignment
+
+name: ATU-Pipeline
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows to run manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    name: Build and deploy code
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Code checkout
+        # Checks-out your repository under $GITHUB_WORKSPACE, so job can access it
+        uses: actions/checkout@v3
+      - name: Java setup
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'oracle'
+          java-version: '21'
+          
+      - name: Unit tests
+        run: mvn -B test --file test_pom.xml
+
+      - name: Build app
+        run:
+         mvn clean
+         mvn -B package --file test_pom.xml
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v5.1.0
+        with:
+         context: .
+         dockerfile: Dockerfile
+         push: false
+         tags: ${{ secrets.DOCKER_HUB_USERNAME }}}/pipeline:$(date-'%Y-%m-%d%H-%M-%S')
+         
+      - name: Docker Hub login
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v5.1.0
+        with:
+          push: true
+          tags: user/app:latest
+      
+
+      
