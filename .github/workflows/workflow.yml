@@ -37,8 +37,7 @@ jobs:
 
       - name: Build app
         run:
-         mvn clean
-         mvn -B package --file test_pom.xml
+         mvn -B prepare-package --file test_pom.xml
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
