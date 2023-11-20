@@ -60,6 +60,13 @@ jobs:
         with:
           push: true
           tags: "${{ secrets.DOCKER_HUB_USERNAME }}/pipeline:latest"
+
+      - name: Pull Docker Image
+        run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/pipeline:latest
+
+      - name: Run Container
+        run: docker run -p 8080:8080 -d ${{ secrets.DOCKER_HUB_USERNAME }}/pipeline:latest
+
       
 
       
