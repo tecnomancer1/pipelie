@@ -32,6 +32,10 @@ jobs:
           distribution: 'oracle'
           java-version: '21'
           
+      - name: Set project name
+        id: project_name
+        run: echo "::set-output name=name::$(basename -s .git $GITHUB_REPOSITORY)"
+      
       - name: Unit tests
         run: mvn -B test --file pom.xml
 
@@ -46,14 +50,9 @@ jobs:
     #  - name: Run Snyk Test
     #    run: snyk test --json > snyk-test-results.json || snyk test --print-deps
 
-      - name: Download Dependency-Check CLI
-        run: |
-          wget https://dl.bintray.com/jeremy-long/owasp/dependency-check-cli/7.0.0/dependency-check-7.0.0-release.zip
-          unzip dependency-check-7.0.0-release.zip
-
       - name: Run OWASP Dependency-Check
         run: |
-          ./dependency-check/bin/dependency-check.sh --scan ./ --project "Your Project Name" --format ALL
+          ./dependency-check/bin/dependency-check.sh --scan ./ --project "pipeline" --format ALL
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
