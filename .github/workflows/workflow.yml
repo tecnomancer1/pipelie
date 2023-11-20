@@ -46,14 +46,14 @@ jobs:
     #  - name: Run Snyk Test
     #    run: snyk test --json > snyk-test-results.json || snyk test --print-deps
 
+      - name: Download Dependency-Check CLI
+        run: |
+          wget https://dl.bintray.com/jeremy-long/owasp/dependency-check-cli/7.0.0/dependency-check-7.0.0-release.zip
+          unzip dependency-check-7.0.0-release.zip
+
       - name: Run OWASP Dependency-Check
-        uses: docker://owasp/dependency-check:7
-        with:
-          args: >
-            --scan /github/workspace
-            --project "Your Project Name"
-            --format "ALL"
-            --project "Your Project Name"
+        run: |
+          ./dependency-check/bin/dependency-check.sh --scan ./ --project "Your Project Name" --format ALL
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
