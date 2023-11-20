@@ -38,6 +38,11 @@ jobs:
       - name: Build app
         run: mvn -B prepare-package --file pom.xml
 
+      - name: Install Snyk CLI
+        run: |
+          curl -L https://npmjs.org/install.sh | sudo sh
+          sudo npm install -g snyk
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
