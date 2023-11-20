@@ -17,7 +17,7 @@ FROM openjdk:17-slim
 WORKDIR /usr/src/app
 
 # Copy the JAR file from the build stage to the runtime image
-COPY --from=build /usr/src/app/target/your-app.jar ./app.jar
+COPY --from=build /usr/src/app/target/pipeline.jar ./app.jar
 
 # Expose the port the app runs on
 EXPOSE 8080
