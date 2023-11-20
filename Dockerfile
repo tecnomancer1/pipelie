@@ -11,7 +11,7 @@ COPY . .
 RUN mvn clean install
 
 # Use a smaller base image for the runtime
-FROM openjdk:17-slim
+FROM openjdk:18-slim
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
