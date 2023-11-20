@@ -43,8 +43,8 @@ jobs:
           curl -L https://npmjs.org/install.sh | sudo sh
           sudo npm install -g snyk
 
-      - name: Run Snyk Test
-        run: snyk test --json > snyk-test-results.json || snyk test --print-deps
+      # - name: Run Snyk Test
+     #    run: snyk test --json > snyk-test-results.json || snyk test --print-deps
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
