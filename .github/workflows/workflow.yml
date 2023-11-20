@@ -33,11 +33,10 @@ jobs:
           java-version: '21'
           
       - name: Unit tests
-        run: mvn -B test --file test_pom.xml
+        run: mvn -B test --file pom.xml
 
       - name: Build app
-        run:
-         mvn -B prepare-package --file test_pom.xml
+        run: mvn -B prepare-package --file pom.xml
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
