@@ -50,9 +50,15 @@ jobs:
     #  - name: Run Snyk Test
     #    run: snyk test --json > snyk-test-results.json || snyk test --print-deps
 
+      - name: Download Dependency-Check CLI
+        run: |
+          wget https://dl.bintray.com/jeremy-long/owasp/dependency-check-6.2.1-release.zip
+          unzip dependency-check-6.2.1-release.zip
+
       - name: Run OWASP Dependency-Check
         run: |
-          ./dependency-check/bin/dependency-check.sh --scan ./ --project "pipeline" --format ALL
+          chmod +x dependency-check/bin/dependency-check.sh
+          ./dependency-check/bin/dependency-check.sh --scan ./ --project "${{ steps.project_name.outputs.name }}" --format ALL
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
