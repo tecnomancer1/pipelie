@@ -45,7 +45,6 @@ jobs:
         uses: docker/build-push-action@v5.1.0
         with:
          context: .
-         dockerfile: Dockerfile
          push: false
          tags: "${{ secrets.DOCKER_HUB_USERNAME }}/pipeline:latest"
          
