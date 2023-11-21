@@ -42,13 +42,13 @@ jobs:
       - name: Build app
         run: mvn -B prepare-package --file pom.xml
 
-   #   - name: Install Snyk CLI
-   #     run: |
-   #      curl -L https://npmjs.org/install.sh | sudo sh
-   #       sudo npm install -g snyk
+      - name: Install Snyk CLI
+        run: |
+         curl -L https://npmjs.org/install.sh | sudo sh
+          sudo npm install -g snyk
 
-    #  - name: Run Snyk Test
-    #    run: snyk test --json > snyk-test-results.json || snyk test --print-deps
+      - name: Run Snyk Test
+        run: snyk test --json > snyk-test-results.json || true
 
       - name: Dependency check
         run: mvn org.owasp:dependency-check-maven:8.3.1:check -DskipDependencyManagement=false
