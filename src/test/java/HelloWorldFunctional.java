@@ -15,7 +15,9 @@ public class HelloWorldFunctional {
     public static void setUp() {
         // Set up WebDriver (assuming ChromeDriver)
         System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        WebDriver driver = new ChromeDriver(options);
     }
 
     @Test
