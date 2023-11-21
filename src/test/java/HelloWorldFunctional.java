@@ -14,8 +14,9 @@ public class HelloWorldFunctional {
     @BeforeAll
     public static void setUp() {
         // Set up WebDriver (assuming ChromeDriver)
-       System.setProperty("webdriver.chrome.driver", "/Users/arkad/Downloads/chromedriver");
-       driver = new ChromeDriver();
+       System.setProperty("webdriver.chrome.driver", "//Users//arkad//Downloads//chromedriver");
+      // driver = new ChromeDriver();
+       WebDriver driver= new ChromeDriver(); driver.get("https://www.google.com");
     }
 
     @Test
