@@ -14,7 +14,7 @@ public class HelloWorldFunctionalTest {
     @BeforeAll
     public static void setUp() {
         // Set up WebDriver (assuming ChromeDriver)
-        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/");
         driver = new ChromeDriver();
     }
 
