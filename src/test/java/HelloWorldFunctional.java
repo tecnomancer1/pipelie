@@ -14,10 +14,10 @@ public class HelloWorldFunctional {
     @BeforeAll
     public static void setUp() {
         // Set up WebDriver (assuming ChromeDriver)
-        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        WebDriver driver = new ChromeDriver(options);
+       System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+       ChromeOptions options = new ChromeOptions();
+       options.addArguments("--no-sandbox");
+       driver = new ChromeDriver(options);  // Assign to the class variable instead of creating a new local variable
     }
 
     @Test
