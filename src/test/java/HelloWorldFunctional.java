@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HelloWorldFunctionalTest {
+public class HelloWorldFunctional {
 
     private static WebDriver driver;
 
