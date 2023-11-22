@@ -79,6 +79,10 @@ jobs:
           push: true
           tags: "${{ secrets.DOCKER_HUB_USERNAME }}/pipeline:latest"
 
+      - name: Run Docker-Scout
+        run: |
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy pipeline:latest
+
       - name: Pull Docker Image
         run: docker  pull tecnomancer1/pipeline:latest
 
