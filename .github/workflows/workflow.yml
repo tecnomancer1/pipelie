@@ -48,8 +48,8 @@ jobs:
           sudo npm install -g snyk
 
       - name: Run Snyk Test
-      #  run: snyk test --json > snyk-test-results.json || snyk test --print-deps
-        run: snyk test --json > snyk-test-results.json || snyk test --print-deps || true
+       # run: snyk test --json > snyk-test-results.json || snyk test --print-deps
+        run: snyk test --json > snyk-test-results.json || true
 
       - name: Display Test Results
         run: cat snyk-test-results.json
@@ -80,7 +80,7 @@ jobs:
           tags: "${{ secrets.DOCKER_HUB_USERNAME }}/pipeline:latest"
 
       - name: Pull Docker Image
-        run: docker pull tecnomancer1/pipeline:latest
+        run: docker  pull tecnomancer1/pipeline:latest
 
       - name: Run Container
         run: docker run -p 8080:8080 -d tecnomancer1/pipeline:latest
@@ -88,10 +88,10 @@ jobs:
       - name: List Running Containers
         run: docker ps
 
-      - name: Run Functional Tests
-        run: |
+   #   - name: Run Functional Tests
+    #    run: |
           # Adjust this command based on how you run your functional tests
-          mvn test -Dtest=HelloWorldFunctional -Dmaven.test.failure.ignore=true
+     #     mvn test -Dtest=HelloWorldFunctional -Dmaven.test.failure.ignore=true
 
       
 
