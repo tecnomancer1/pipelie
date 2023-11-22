@@ -80,7 +80,7 @@ jobs:
           tags: "${{ secrets.DOCKER_HUB_USERNAME }}/pipeline:latest"
 
       - name: Pull Docker Image
-        run: docker  build --pull . -t tecnomancer1/pipeline:latest
+        run: docker  pull tecnomancer1/pipeline:latest
 
       - name: Run Container
         run: docker run -p 8080:8080 -d tecnomancer1/pipeline:latest
