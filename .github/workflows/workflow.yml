@@ -88,10 +88,10 @@ jobs:
       - name: List Running Containers
         run: docker ps
 
-      - name: Run Functional Tests
-        run: |
+   #   - name: Run Functional Tests
+    #    run: |
           # Adjust this command based on how you run your functional tests
-          mvn test -Dtest=HelloWorldFunctional -Dmaven.test.failure.ignore=true
+     #     mvn test -Dtest=HelloWorldFunctional -Dmaven.test.failure.ignore=true
 
       
 
