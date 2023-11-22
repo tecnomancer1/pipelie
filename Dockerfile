@@ -19,7 +19,7 @@ RUN mvn clean install
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM oraclelinux:8-slim
+FROM oraclelinux:9-slim
 
 RUN set -eux; \
 	microdnf install \
