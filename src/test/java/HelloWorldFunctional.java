@@ -14,7 +14,11 @@ public class HelloWorldFunctional {
     @BeforeAll
     public static void setUp() {
         // Set up WebDriver (assuming ChromeDriver)
+<<<<<<< HEAD
        System.setProperty("webdriver.chrome.driver", "/opt/homebrew/bin/chromedriver");
+=======
+       System.setProperty("webdriver.chrome.driver", "///usr///local///bin///chromedriver");
+>>>>>>> parent of fca32b9 (Update HelloWorldFunctional.java)
       // driver = new ChromeDriver();
        WebDriver driver= new ChromeDriver(); driver.get("https://www.google.com");
     }
