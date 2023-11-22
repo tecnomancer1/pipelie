@@ -11,7 +11,7 @@ COPY . .
 RUN mvn clean install
 
 # Use a smaller base image for the runtime
-FROM oraclelinux:9-slim
+FROM FROM openjdk:22-slim
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
