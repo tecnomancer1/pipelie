@@ -1,2 +1,2 @@
 # pipeline
-demo pipeline for ATU
+demo workflow pipeline for ATU
