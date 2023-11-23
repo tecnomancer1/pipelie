@@ -58,7 +58,7 @@ jobs:
         run: cat snyk-test-results.json
 
       - name: Dependency check
-        run: mvn org.owasp:dependency-check-maven:9.0.0:check -DskipDependencyManagement=false
+        run: mvn org.owasp:dependency-check-maven:8.4.3:check -DskipDependencyManagement=false
       
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
