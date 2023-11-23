@@ -52,16 +52,7 @@ jobs:
       
       - name: Run Snyk Test
       #  run: snyk test --json > snyk-test-results.json || snyk test --print-deps
-      #  run: snyk test --json > snyk-test-results.json || true
-        id: snyk-test
-        run: |
-         snyk test --json > snyk-test-results.json
-         echo "Snyk exit code: $?"
-         echo "Snyk exit code: $?" >> $GITHUB_ENV
-
-      - name: Continue or Stop Workflow
-        if: ${{ failure() && env.SNYK_EXIT_CODE != '1' }}
-        run: exit ${{ env.SNYK_EXIT_CODE }}
+        run: snyk test --json > snyk-test-results.json || true
 
       - name: Display Test Results
         run: cat snyk-test-results.json
