@@ -85,6 +85,11 @@ jobs:
       - name: Pull Docker Image
         run: docker  pull tecnomancer1/pipeline:latest
 
+      - name: Stop and remove existing containers
+        run: |
+          docker ps -q | xargs docker stop
+          docker ps -aq | xargs docker rm
+
       - name: Run Container
         run: docker run -p 8080:8080 -d tecnomancer1/pipeline:latest
 
