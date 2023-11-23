@@ -5,6 +5,7 @@ public class HelloWorldControllerTest {
 
     @Test
     public void helloWorldEndpointShouldReturnHelloWorld() {
+        pipeline application = new pipeline();
         HelloWorldController controller = new HelloWorldController();
         String result = controller.helloWorld();
         assertEquals("Hello World!", result);
