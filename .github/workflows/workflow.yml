@@ -58,7 +58,7 @@ jobs:
         run: cat snyk-test-results.json
 
       - name: Dependency check
-        run: mvn org.owasp:dependency-check-maven:8.3.1:check -DskipDependencyManagement=false
+        run: mvn org.owasp:dependency-check-maven:9.0.0:check -DskipDependencyManagement=false
       
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -104,7 +104,7 @@ jobs:
          fi
 
       - name: Run Container
-        run: docker run -p 8080:8080 -d ***:pipeline:latest tail -f /dev/null
+        run: docker run -p 8080:8080 -d tecnomancer1/pipeline:latest tail -f /dev/null
 
       - name: List Running Containers
         run: docker ps
