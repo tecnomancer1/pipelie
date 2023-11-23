@@ -1,7 +1,7 @@
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-public class HelloWorldControllerTest {
+public class pipelineTest {
 
     @Test
     public void helloWorldEndpointShouldReturnHelloWorld() {
