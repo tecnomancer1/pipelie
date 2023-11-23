@@ -60,7 +60,7 @@ jobs:
          echo "Snyk exit code: $?" >> $GITHUB_ENV
 
       - name: Continue or Stop Workflow
-        if: 'env.SNYK_EXIT_CODE != ''0'' && env.SNYK_EXIT_CODE != ''1'''
+        if: 'env.SNYK_EXIT_CODE = ''2'' '
         run: exit ${{ env.SNYK_EXIT_CODE }}
 
       - name: Display Test Results
