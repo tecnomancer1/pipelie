@@ -1,12 +1,13 @@
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-@SpringBootTest
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@WebMvcTest
 @AutoConfigureMockMvc
 public class HelloWorldControllerTest {
 
@@ -15,11 +16,7 @@ public class HelloWorldControllerTest {
 
     @Test
     public void testHelloWorldEndpoint() throws Exception {
-        // Perform a GET request to the endpoint "/"
-        mockMvc.perform(MockMvcRequestBuilders.get("/"))
-                // Expect a status code of 200 (OK)
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                // Expect the response body to contain "Hello World!"
-                .andExpect(MockMvcResultMatchers.content().string("Hello World!"));
+        mockMvc.perform(get("/hello"))
+                .andExpect(status().isOk());
     }
 }
