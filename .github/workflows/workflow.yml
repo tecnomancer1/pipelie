@@ -106,9 +106,6 @@ jobs:
       - name: Run Container
         run: docker run -p 8080:8080 -d tecnomancer1/pipeline:latest
 
-      - name: Wait for Container to Start
-        run: sleep 20
-
       - name: List Running Containers
         run: docker ps
 
