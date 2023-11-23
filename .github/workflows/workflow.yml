@@ -87,8 +87,22 @@ jobs:
 
       - name: Stop and remove existing containers
         run: |
-          docker ps -q | xargs docker stop
-          docker ps -aq | xargs docker rm
+         RUNNING_CONTAINERS=$(docker ps -q)
+          if [ -n "$RUNNING_CONTAINERS" ]; then
+           echo "Stopping running containers..."
+           echo "$RUNNING_CONTAINERS" | xargs docker stop
+         else
+          echo "No running containers found."
+         fi
+
+         ALL_CONTAINERS=$(docker ps -aq)
+         if [ -n "$ALL_CONTAINERS" ]; then
+           echo "Removing all containers..."
+           echo "$ALL_CONTAINERS" | xargs docker rm
+         else
+          echo "No containers found."
+         fi
+
 
       - name: Run Container
         run: docker run -p 8080:8080 -d tecnomancer1/pipeline:latest
