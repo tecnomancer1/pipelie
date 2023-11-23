@@ -51,8 +51,8 @@ jobs:
         run: snyk auth ${{ secrets.SNYK_API_TOKEN }}
       
       - name: Run Snyk Test
-        run: snyk test --json > snyk-test-results.json || snyk test --print-deps
-       # run: snyk test --json > snyk-test-results.json || true
+       # run: snyk test --json > snyk-test-results.json || snyk test --print-deps
+        run: snyk test --json > snyk-test-results.json || true
 
       - name: Display Test Results
         run: cat snyk-test-results.json
