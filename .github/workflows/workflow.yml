@@ -109,8 +109,8 @@ jobs:
       - name: Wait for Container to Start
         run: sleep 20
 
-      - name: Test API endpoint
-        run: curl http://localhost:8080/  # Replace this with your actual API endpoint
-
       - name: List Running Containers
         run: docker ps
+
+      - name: Test API endpoint
+        run: docker exec CONTAINER_ID curl http://localhost:8080/ 
