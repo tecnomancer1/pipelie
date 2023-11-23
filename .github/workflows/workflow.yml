@@ -88,14 +88,11 @@ jobs:
       - name: Run Container
         run: docker run -p 8080:8080 -d tecnomancer1/pipeline:latest
 
+      - name: Wait for application to start
+        run: docker run -p 8080:8080 -d tecnomancer1/pipeline:latest && sleep 10
+
+      - name: Test API endpoint
+        run: curl http://localhost:8080/  # Replace this with your actual API endpoint
+
       - name: List Running Containers
         run: docker ps
-
-   #   - name: Run Functional Tests
-    #    run: |
-          # Adjust this command based on how you run your functional tests
-     #     mvn test -Dtest=HelloWorldFunctional -Dmaven.test.failure.ignore=true
-
-      
-
-      
