@@ -44,6 +44,14 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Spring Boot Test dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>3.1.6</version> 
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
