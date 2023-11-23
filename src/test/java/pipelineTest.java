@@ -6,7 +6,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.junit.Assert.assertEquals;
 
-public class PipelineTest {
+public class pipelineTest {
 
     @Test
     public void testHelloWorldEndpoint() throws Exception {
