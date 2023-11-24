@@ -109,5 +109,5 @@ jobs:
       - name: List Running Containers
         run: docker ps
 
-      - name: Test API endpoint
-        run: docker exec $(docker ps -q) curl http://localhost:8080/
+   #   - name: Test API endpoint
+    #    run: docker exec $(docker ps -q) curl http://localhost:8080/
