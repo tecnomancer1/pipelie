@@ -53,6 +53,9 @@ COPY --from=build /usr/src/app/target/pipeline.jar ./pipeline.jar
 # Copy the target directory
 COPY --from=build /usr/src/app/target /usr/src/app/target
 
+# Copy the Python script to the container
+COPY keep_alive.py /usr/src/app/
+
 # Expose the port the app runs on
 EXPOSE 8080
 
@@ -61,7 +64,7 @@ CMD java -jar pipeline.jar
 # Define the command to run the application
 #CMD ["java", "-jar", "pipeline.jar"]
 
-CMD ["sh", "-c", "java -jar pipeline.jar & sleep 60"]
+CMD ["sh", "-c", "java -jar pipeline.jar & python3 keep_alive.py"]
 
 # Run the Java application in an infinite loop to keep the container running
 #CMD ["sh", "-c", "java -jar pipeline.jar"]
