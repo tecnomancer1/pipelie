@@ -46,11 +46,17 @@ COPY --from=build /usr/src/app/target/pipeline.jar ./pipeline.jar
 # Copy the target directory
 COPY --from=build /usr/src/app/target /usr/src/app/target
 
+# Copy a script to keep the container running
+COPY keep-alive.sh /usr/src/app/keep-alive.sh
+
 # Expose the port the app runs on
 EXPOSE 8080
 
 # Define the command to run the application
-CMD ["java", "-jar", "pipeline.jar"]
+#CMD ["java", "-jar", "pipeline.jar"]
+
+# Run the Java application and the keep-alive script
+CMD ["sh", "-c", "java -jar pipeline.jar & sh /usr/src/app/keep-alive.sh"]
 
 # Run the Java application in an infinite loop to keep the container running
 #CMD ["sh", "-c", "java -jar pipeline.jar"]
