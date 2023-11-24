@@ -118,17 +118,18 @@ jobs:
          fi
 
       - name: Run Container
-        run: docker run -p 8080:8080 -d tecnomancer1/pipeline:latest
+        run: docker run -p 8080:8080 -d tecnomancer1/pipeline:latest tail -f /dev/null
+
+      - name: List Running Containers
+        run: docker ps
 
       - name: Check if JAR file exists in the Docker container
         run: docker exec $(docker ps -q) test -f /usr/src/app/target/pipeline.jar && echo "File exists" || echo "File does not exist"
 
-
       - name: Check JAR file inside container
         run: docker exec $(docker ps -aq | head -n 1) ls /usr/src/app/target
 
-      - name: List Running Containers
-        run: docker ps
+
 
    #   - name: Test API endpoint
     #    run: docker exec $(docker ps -q) curl http://localhost:8080/
