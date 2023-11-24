@@ -41,6 +41,12 @@ jobs:
 
       - name: Build app
         run: mvn -B prepare-package --file pom.xml
+       
+      - name: Build app
+        run: mvn -B package --file pom.xml
+
+      - name: List contents of the workspace
+        run: ls -R $GITHUB_WORKSPACE
 
       - name: List contents of target directory
         run: ls -R target
