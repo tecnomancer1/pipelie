@@ -129,7 +129,5 @@ jobs:
       - name: Check JAR file inside container
         run: docker exec $(docker ps -aq | head -n 1) ls /usr/src/app/target
 
-
-
-   #   - name: Test API endpoint
-    #    run: docker exec $(docker ps -q) curl http://localhost:8080/
+      - name: Test API endpoint
+        run: docker exec $(docker ps -q) curl http://localhost:8080/
