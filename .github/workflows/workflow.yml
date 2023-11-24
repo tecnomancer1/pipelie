@@ -63,12 +63,23 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
-      - name: Build Docker images
-        uses: docker/build-push-action@v5.1.0
-        with:
-         context: .
-         push: false
-         tags: "${{ secrets.DOCKER_HUB_USERNAME }}/pipeline:latest"
+      
+      - name: Build Docker image
+        run: |
+          export CONTAINER_NAME=my-container-$(date +%s)
+          export IMAGE_NAME=my-image-$(date +%s)
+          docker build -t $IMAGE_NAME .
+          docker run -p 8080:8080 --name $CONTAINER_NAME -d $IMAGE_NAME tail -f /dev/null
+        env:
+          CONTAINER_NAME: my-container
+          IMAGE_NAME: my-image
+      
+     # - name: Build Docker images
+      #  uses: docker/build-push-action@v5.1.0
+       # with:
+        # context: .
+         #push: false
+         #tags: "${{ secrets.DOCKER_HUB_USERNAME }}/pipeline:latest"
          
       - name: Docker Hub login
         uses: docker/login-action@v3
