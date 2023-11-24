@@ -53,10 +53,7 @@ COPY keep-alive.sh /usr/src/app/keep-alive.sh
 EXPOSE 8080
 
 # Define the command to run the application
-#CMD ["java", "-jar", "pipeline.jar"]
-
-# Run the Java application and the keep-alive script
-CMD ["sh", "-c", "java -jar pipeline.jar & sh /usr/src/app/keep-alive.sh"]
+CMD ["java", "-jar", "pipeline.jar"]
 
 # Run the Java application in an infinite loop to keep the container running
 #CMD ["sh", "-c", "java -jar pipeline.jar"]
