@@ -58,4 +58,4 @@ EXPOSE 8080
 CMD ["java", "-jar", "app.jar"]
 
 # Run the Java application in an infinite loop to keep the container running
-CMD ["sh", "-c", "java -jar your-pipeline.jar && while true; do sleep 1; done"]
+CMD ["sh", "-c", "java -jar app.jar & python3 -c 'while True: pass'"]
