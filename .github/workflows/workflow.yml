@@ -48,6 +48,9 @@ jobs:
       - name: List contents of the workspace
         run: ls -R $GITHUB_WORKSPACE
 
+      - name: Display Target Directory
+        run: echo "Target Directory:" $GITHUB_WORKSPACE/target
+
       - name: List contents of target directory
         run: ls -R target
 
