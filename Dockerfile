@@ -54,4 +54,4 @@ CMD ["java", "-jar", "pipeline.jar"]
 
 # Run the Java application in an infinite loop to keep the container running
 #CMD ["sh", "-c", "java -jar pipeline.jar"]
-CMD ["sh", "-c", "java -jar app.jar && tail -f /dev/null"]
+#CMD ["sh", "-c", "java -jar app.jar && tail -f /dev/null"]
