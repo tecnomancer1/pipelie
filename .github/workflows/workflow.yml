@@ -79,9 +79,6 @@ jobs:
          push: false
          tags: "${{ secrets.DOCKER_HUB_USERNAME }}/pipeline:latest"
 
-      - name: Check JAR file inside container
-        run: docker exec $(docker ps -aq) ls /usr/src/app/target
-         
       - name: Docker Hub login
         uses: docker/login-action@v3
         with:
@@ -117,6 +114,9 @@ jobs:
 
       - name: Run Container
         run: docker run -p 8080:8080 -d tecnomancer1/pipeline:latest
+
+      - name: Check JAR file inside container
+        run: docker exec $(docker ps -aq | head -n 1) ls /usr/src/app/target
 
       - name: List Running Containers
         run: docker ps
