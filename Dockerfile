@@ -42,7 +42,6 @@ WORKDIR /usr/src/app
 
 # Copy the JAR file from the build stage to the runtime image
 COPY --from=build /usr/src/app/target/pipeline.jar ./pipeline.jar
-#COPY --from=build /home/runner/work/pipeline/pipeline/target/pipeline.jar ./app.jar
 
 # Copy the target directory
 COPY --from=build /usr/src/app/target /usr/src/app/target
@@ -51,8 +50,8 @@ COPY --from=build /usr/src/app/target /usr/src/app/target
 EXPOSE 8080
 
 # Define the command to run the application
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "pipeline.jar"]
 
 # Run the Java application in an infinite loop to keep the container running
 #CMD ["sh", "-c", "java -jar pipeline.jar"]
-CMD ["sh", "-c", "java -jar pipeline.jar && while true; do sleep 1; done"]
+CMD ["sh", "-c", "java -jar app.jar && tail -f /dev/null"]
