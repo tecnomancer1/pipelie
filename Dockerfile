@@ -42,6 +42,8 @@ WORKDIR /usr/src/app
 
 # Copy the JAR file from the build stage to the runtime image
 COPY --from=build /usr/src/app/target/pipeline.jar ./app.jar
+COPY --from=build /home/runner/work/pipeline/pipeline/target/pipeline.jar ./app.jar
+
 
 # Expose the port the app runs on
 EXPOSE 8080
