@@ -49,6 +49,8 @@ COPY --from=build /usr/src/app/target /usr/src/app/target
 # Expose the port the app runs on
 EXPOSE 8080
 
+CMD java -jar pipeline.jar
+
 # Define the command to run the application
 CMD ["java", "-jar", "pipeline.jar"]
 
