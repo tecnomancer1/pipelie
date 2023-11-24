@@ -104,7 +104,7 @@ jobs:
          fi
 
       - name: Run Container
-        run: docker run -p 8080:8080 -d tecnomancer1/pipeline:latest tail -f /dev/null
+        run: docker run -p 8080:8080 -d tecnomancer1/pipeline:latest python -m http.server 8080
 
       - name: List Running Containers
         run: docker ps
