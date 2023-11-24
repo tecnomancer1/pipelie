@@ -41,8 +41,8 @@ ENV JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto
 WORKDIR /usr/src/app
 
 # Copy the JAR file from the build stage to the runtime image
-#COPY --from=build /usr/src/app/target/pipeline.jar ./app.jar
-COPY --from=build /home/runner/work/pipeline/pipeline/target/pipeline.jar ./app.jar
+COPY --from=build /usr/src/app/target/pipeline.jar ./pipeline.jar
+#COPY --from=build /home/runner/work/pipeline/pipeline/target/pipeline.jar ./app.jar
 
 
 # Expose the port the app runs on
@@ -52,4 +52,4 @@ EXPOSE 8080
 CMD ["java", "-jar", "app.jar"]
 
 # Run the Java application in an infinite loop to keep the container running
-CMD ["sh", "-c", "java -jar app.jar"]
+CMD ["sh", "-c", "java -jar pipeline.jar"]
