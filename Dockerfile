@@ -47,8 +47,5 @@ COPY --from=build /usr/src/app/target/pipeline.jar ./app.jar
 # Expose the port the app runs on
 EXPOSE 8080
 
-# Add a command to keep the container running
-CMD ["tail", "-f", "/dev/null"]
-
 # Define the command to run the application
 CMD ["java", "-jar", "app.jar"]
