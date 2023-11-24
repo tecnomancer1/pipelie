@@ -10,9 +10,6 @@ COPY . .
 # Build the application
 RUN mvn clean install
 
-# Use a smaller base image for the runtime
-#FROM openjdk:22-slim
-
 FROM amazonlinux:2023
 
 ARG version=21.0.1.12-1
