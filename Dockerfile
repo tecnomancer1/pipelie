@@ -35,14 +35,9 @@ RUN set -eux \
     && dnf clean all \
     && sed -i '/localpkg_gpgcheck=1/d' /etc/dnf/dnf.conf
 
-
-# Install Python
-RUN dnf install -y python3
-
 # Set environment variables
 ENV LANG C.UTF-8
 ENV JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto
-ENV PATH=${PATH}:/usr/bin/python3
 
 
 # Set the working directory in the container
