@@ -48,4 +48,7 @@ COPY --from=build /usr/src/app/target/pipeline.jar ./app.jar
 EXPOSE 8080
 
 # Define the command to run the application
-CMD ["java", "-jar", "app.jar"]
+#CMD ["java", "-jar", "app.jar"]
+
+# Run the Java application in an infinite loop to keep the container running
+CMD ["sh", "-c", "java -jar your-pipeline.jar && while true; do sleep 1; done"]
