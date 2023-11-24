@@ -46,9 +46,6 @@ COPY --from=build /usr/src/app/target/pipeline.jar ./pipeline.jar
 # Copy the target directory
 COPY --from=build /usr/src/app/target /usr/src/app/target
 
-# Copy a script to keep the container running
-COPY keep-alive.sh /usr/src/app/keep-alive.sh
-
 # Expose the port the app runs on
 EXPOSE 8080
 
