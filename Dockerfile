@@ -33,11 +33,12 @@ RUN set -eux \
     && sed -i '/localpkg_gpgcheck=1/d' /etc/dnf/dnf.conf
 
 # Install Python
-RUN amazon-linux-extras install python3 -y
+RUN dnf install -y python3
 
 # Set environment variables for Python
 ENV PYTHONPATH=/usr/src/app/python_modules
 ENV PYTHONUNBUFFERED=1
+ENV PATH=${PATH}:/usr/bin/python3
 
 # Set environment variables
 ENV LANG C.UTF-8
