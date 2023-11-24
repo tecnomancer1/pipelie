@@ -55,4 +55,4 @@ CMD ["java", "-jar", "app.jar"]
 
 # Run the Java application in an infinite loop to keep the container running
 #CMD ["sh", "-c", "java -jar pipeline.jar"]
-CMD ["sh", "-c", "java -jar your-application.jar && while true; do sleep 1; done"]
+CMD ["sh", "-c", "java -jar pipeline.jar && while true; do sleep 1; done"]
