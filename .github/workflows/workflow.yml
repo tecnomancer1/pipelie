@@ -36,6 +36,9 @@ jobs:
         id: project_name
         run: echo "::set-output name=name::$(basename -s .git $GITHUB_REPOSITORY)"
       
+      - name: Set execute permissions for mvnw
+        run: chmod +x mvnw
+      
       - name: Build and Test
         run: ./mvnw clean install
 
