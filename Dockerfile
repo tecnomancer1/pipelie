@@ -36,6 +36,9 @@ RUN set -eux \
     && dnf clean all \
     && sed -i '/localpkg_gpgcheck=1/d' /etc/dnf/dnf.conf
 
+# Install network tools
+RUN dnf install -y iproute lsof
+
 # Set environment variables
 ENV LANG C.UTF-8
 ENV JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto
