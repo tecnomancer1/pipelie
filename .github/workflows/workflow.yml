@@ -36,6 +36,12 @@ jobs:
         id: project_name
         run: echo "::set-output name=name::$(basename -s .git $GITHUB_REPOSITORY)"
       
+      - name: Build and Test
+        run: ./mvnw clean install
+
+      - name: Set up Maven Wrapper
+        run: mvn -N io.takari:maven:wrapper
+      
       - name: Unit tests
         run: mvn -B test --file pom.xml
 
