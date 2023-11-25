@@ -43,7 +43,7 @@ RUN dnf install -y lsof
 RUN dnf install -y nginx
 
 # Remove the default Nginx configuration
-RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+RUN rm -f /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy the custom Nginx configuration
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
