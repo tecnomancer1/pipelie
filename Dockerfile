@@ -37,7 +37,7 @@ RUN set -eux \
     && sed -i '/localpkg_gpgcheck=1/d' /etc/dnf/dnf.conf
 
 # Install network tools
-RUN dnf install -y iproute lsof
+RUN dnf install -y lsof
 
 # Set environment variables
 ENV LANG C.UTF-8
