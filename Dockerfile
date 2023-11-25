@@ -36,8 +36,8 @@ RUN set -eux \
     && dnf clean all \
     && sed -i '/localpkg_gpgcheck=1/d' /etc/dnf/dnf.conf
 
-# Install network tools
-RUN dnf install -y lsof
+# Install essential utilities
+RUN dnf install -y procps net-tools
 
 # Install Nginx
 RUN dnf install -y nginx
