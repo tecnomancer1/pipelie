@@ -92,7 +92,7 @@
 	                    </archive>
 	                </configuration>
 	            </plugin>
-        </plugins>
+        	</plugins>
 	</build>
 	<repositories>
 		<repository>
@@ -130,5 +130,4 @@
 			</releases>
 		</pluginRepository>
 	</pluginRepositories>
-
 </project>
