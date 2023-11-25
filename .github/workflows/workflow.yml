@@ -118,7 +118,8 @@ jobs:
         run: docker exec $(docker ps -aq | head -n 1) ls /usr/src/app/target
 
       - name: List Open Ports in the Running Containers
-        run: docker exec $(docker ps -aq | head -n 1) lsof -i -P -n 2>&1
+        run: docker exec $(docker ps -aq | head -n 1) ps aux
+
 
      # - name: Test API endpoint
       #  run: docker exec $(docker ps -aq | head -n 1)  curl http://localhost:8080/greeting?name=User
