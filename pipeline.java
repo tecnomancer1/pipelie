@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-public class CalculatorApplication {
+public class pipeline {
 
     public static void main(String[] args) {
         SpringApplication.run(CalculatorApplication.class, args);
