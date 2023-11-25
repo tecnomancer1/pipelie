@@ -39,6 +39,15 @@ RUN set -eux \
 # Install network tools
 RUN dnf install -y lsof
 
+# Install Nginx
+RUN dnf install -y nginx
+
+# Remove the default Nginx configuration
+RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy the custom Nginx configuration
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+
 # Set environment variables
 ENV LANG C.UTF-8
 ENV JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto
@@ -54,6 +63,7 @@ COPY --from=build /usr/src/app/target /usr/src/app/target
 
 # Expose the port the app runs on
 EXPOSE 8080
+EXPOSE 80
 
 # Define the command to run the application
 CMD ["java", "-jar", "pipeline.jar"]
