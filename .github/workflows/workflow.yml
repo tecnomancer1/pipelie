@@ -43,7 +43,7 @@ jobs:
         run: mvn -B prepare-package --file pom.xml
        
       - name: Build app
-        run: mvn -B package --file pom.xml
+        run: mvn -B clean package --file pom.xml
 
       - name: List contents of the workspace
         run: ls -R $GITHUB_WORKSPACE
