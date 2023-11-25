@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class pipeline {
 
     public static void main(String[] args) {
-        SpringApplication.run(CalculatorApplication.class, args);
+        SpringApplication.run(pipeline.class, args);
     }
 }
 
