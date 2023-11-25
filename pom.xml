@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>pipeline</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>pipeline</name>
+	<description>ATU pipeline project with Spring Boot</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
@@ -27,15 +27,72 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+        		<groupId>org.junit.jupiter</groupId>
+        		<artifactId>junit-jupiter-api</artifactId>
+        		<version>5.10.1</version>
+        		<scope>test</scope>
+   		 </dependency>
+        	 <dependency>
+			<groupId>org.springframework.boot</groupId>
+           		<artifactId>spring-boot-starter-web</artifactId>
+            		<version>3.1.6</version> 
+        	</dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
+       		<dependency>
+            		<groupId>org.yaml</groupId>
+            		<artifactId>snakeyaml</artifactId>
+            		<version>2.2</version>
+        	</dependency>
+
+
+        <!-- JUnit for unit and integration tests -->
+        	<dependency>
+            		<groupId>junit</groupId>
+            		<artifactId>junit</artifactId>
+            		<version>4.13.2</version>
+            		<scope>test</scope>
+        	</dependency>
+
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
+		<finalName>pipeline</finalName>
+	        <plugins>
+	            <plugin>
+	                <groupId>org.springframework.boot</groupId>
+	                <artifactId>spring-boot-maven-plugin</artifactId>
+	                <version>3.1.6</version>
+	            </plugin>
+	            <!-- Surefire Plugin for running tests -->
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-surefire-plugin</artifactId>
+	                <version>3.2.2</version>
+	                <configuration>
+	                    <includes>
+	                        <include>**/*Test.java</include>
+	                        <include>**/Test*.java</include>
+	                        <!-- Add any additional test includes here -->
+	                    </includes>
+	                </configuration>
+	            </plugin>
+	            <!-- Maven JAR Plugin for specifying the main class -->
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-jar-plugin</artifactId>
+	                <version>3.3.0</version>
+	                <configuration>
+	                    <archive>
+	                        <manifest>
+	                            <mainClass>com.example.CalculatorApplication</mainClass>
+	                        </manifest>
+	                    </archive>
+	                </configuration>
+	            </plugin>
+        </plugins>
 	</build>
 	<repositories>
 		<repository>
