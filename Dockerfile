@@ -48,11 +48,8 @@ COPY --from=build /usr/src/app/target /usr/src/app/target
 # Expose the port the app runs on
 EXPOSE 8080
 
-CMD java -jar pipeline.jar
-
 # Define the command to run the application
 CMD ["java", "-jar", "pipeline.jar"]
 
 # Run the Java application in an infinite loop to keep the container running
-#CMD ["sh", "-c", "java -jar pipeline.jar"]
-#CMD ["sh", "-c", "java -jar app.jar && tail -f /dev/null"]
+CMD ["sh", "-c", "while :; do sleep 60; done"]
