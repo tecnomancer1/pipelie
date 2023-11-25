@@ -36,9 +36,6 @@ jobs:
         id: project_name
         run: echo "::set-output name=name::$(basename -s .git $GITHUB_REPOSITORY)"
       
-      - name: Remove target directory
-        run: rm -rf target
-      
       - name: Set execute permissions for mvnw
         run: chmod +x mvnw
       
@@ -81,7 +78,7 @@ jobs:
         run: cat snyk-test-results.json
 
       - name: Dependency check
-        run: mvn org.owasp:dependency-check-maven:8.4.3:check -DskipDependencyManagement=false
+        run: mvn org.owasp:dependency-check-maven:8.3.1:check -DskipDependencyManagement=false
       
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
