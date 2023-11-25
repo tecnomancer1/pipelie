@@ -117,8 +117,12 @@ jobs:
       - name: Check JAR file inside container
         run: docker exec $(docker ps -aq | head -n 1) ls /usr/src/app/target
 
-      - name: List Open Ports in the Running Containers
+      - name: List Processes in the Running Containers
         run: docker exec $(docker ps -aq | head -n 1) ps aux
+
+      - name: List Open Ports in the Running Containers
+        run: docker exec $(docker ps -aq | head -n 1) netstat -tulpn
+
 
 
      # - name: Test API endpoint
