@@ -7,6 +7,10 @@ WORKDIR /usr/src/app
 # Copy the project files into the container at /usr/src/app
 COPY . .
 
+# Install Maven (if not already installed in the base image)
+RUN apt-get update && \
+    apt-get install -y maven
+
 # Build the application
 RUN mvn clean install
 
