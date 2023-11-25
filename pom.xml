@@ -87,7 +87,7 @@
 	                <configuration>
 	                    <archive>
 	                        <manifest>
-	                            <mainClass>com.example.CalculatorApplication</mainClass>
+	                            <mainClass>pipeline</mainClass>
 	                        </manifest>
 	                    </archive>
 	                </configuration>
