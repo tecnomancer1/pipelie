@@ -108,24 +108,6 @@ jobs:
       - name: Check if JAR file exists in Docker image
         run: docker run --rm tecnomancer1/pipeline:latest ls /usr/src/app/target
 
-      - name: Stop and remove existing containers
-        run: |
-         RUNNING_CONTAINERS=$(docker ps -q)
-          if [ -n "$RUNNING_CONTAINERS" ]; then
-           echo "Stopping running containers..."
-           echo "$RUNNING_CONTAINERS" | xargs docker stop
-         else
-          echo "No running containers found."
-         fi
-
-         ALL_CONTAINERS=$(docker ps -aq)
-         if [ -n "$ALL_CONTAINERS" ]; then
-           echo "Removing all containers..."
-           echo "$ALL_CONTAINERS" | xargs docker rm
-         else
-          echo "No containers found."
-         fi
-
       - name: Run Container
         run: docker run -d --rm -p  8080:8080 tecnomancer1/pipeline:latest
 
@@ -136,7 +118,7 @@ jobs:
         run: docker exec $(docker ps -aq | head -n 1) ls /usr/src/app/target
 
       - name: List Open Ports in the Running Containers
-        run: docker exec $(docker ps -aq | head -n 1) lsof -i -P -n
+        run: docker exec $(docker ps -aq | head -n 1) lsof -i -P -n 2>&1
 
      # - name: Test API endpoint
       #  run: docker exec $(docker ps -aq | head -n 1)  curl http://localhost:8080/greeting?name=User
