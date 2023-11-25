@@ -32,14 +32,6 @@ RUN set -eux \
     && dnf clean all \
     && sed -i '/localpkg_gpgcheck=1/d' /etc/dnf/dnf.conf
 
-# Install Python
-RUN dnf install -y python3
-
-# Set environment variables for Python
-ENV PYTHONPATH=/usr/src/app/python_modules
-ENV PYTHONUNBUFFERED=1
-ENV PATH=${PATH}:/usr/bin/python3
-
 # Set environment variables
 ENV LANG C.UTF-8
 ENV JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto
@@ -53,18 +45,13 @@ COPY --from=build /usr/src/app/target/pipeline.jar ./pipeline.jar
 # Copy the target directory
 COPY --from=build /usr/src/app/target /usr/src/app/target
 
-# Copy the Python script to the container
-COPY keep_alive.py /usr/src/app/
-
 # Expose the port the app runs on
 EXPOSE 8080
 
 CMD java -jar pipeline.jar
 
 # Define the command to run the application
-#CMD ["java", "-jar", "pipeline.jar"]
-
-CMD ["sh", "-c", "java -jar pipeline.jar & python3 keep_alive.py"]
+CMD ["java", "-jar", "pipeline.jar"]
 
 # Run the Java application in an infinite loop to keep the container running
 #CMD ["sh", "-c", "java -jar pipeline.jar"]
