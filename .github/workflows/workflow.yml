@@ -127,7 +127,7 @@ jobs:
          fi
 
       - name: Run Container
-        run: docker run -p 8080:8080 -d tecnomancer1/pipeline:latest
+        run: docker run --rm -p  8080:8080 tecnomancer1/pipeline:latest
 
       - name: List Running Containers
         run: docker ps
