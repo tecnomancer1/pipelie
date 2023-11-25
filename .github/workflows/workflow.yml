@@ -127,13 +127,16 @@ jobs:
          fi
 
       - name: Run Container
-        run: docker run --rm -p  8080:8080 tecnomancer1/pipeline:latest
+        run: docker run -d --rm -p  8080:8080 tecnomancer1/pipeline:latest
 
       - name: List Running Containers
         run: docker ps
 
       - name: Check JAR file inside container
         run: docker exec $(docker ps -aq | head -n 1) ls /usr/src/app/target
+
+      - name: List Running Containers
+        run: docker ps
 
       - name: Test API endpoint
         run: docker exec $(docker ps -aq | head -n 1)  curl http://localhost:8080/greeting?name=User
