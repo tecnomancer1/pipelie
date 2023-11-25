@@ -47,7 +47,6 @@
             		<version>2.2</version>
         	</dependency>
 
-
         <!-- JUnit for unit and integration tests -->
         	<dependency>
             		<groupId>junit</groupId>
@@ -66,6 +65,15 @@
 	                <artifactId>spring-boot-maven-plugin</artifactId>
 	                <version>3.1.6</version>
 	            </plugin>
+                    <plugin>
+        		<groupId>org.owasp</groupId>
+            		<artifactId>dependency-check-maven</artifactId>
+            		<version>8.4.3</version>
+            		<configuration>
+               			<autoUpdate>true</autoUpdate>
+    				<cacheLocation>/path/to/cache</cacheLocation>
+           		</configuration>
+        	    </plugin>
 	            <!-- Surefire Plugin for running tests -->
 	            <plugin>
 	                <groupId>org.apache.maven.plugins</groupId>
