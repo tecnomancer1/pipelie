@@ -1,5 +1,5 @@
 # Use an official Maven runtime as a parent image
-FROM maven:3.8.4-openjdk-17-slim AS build
+FROM amazoncorretto:21-al2023 AS build
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
