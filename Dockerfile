@@ -54,6 +54,7 @@ COPY src/main/resources/static/index.html /usr/share/nginx/html/
 # Set environment variables
 ENV LANG C.UTF-8
 ENV JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto
+ENV NGINX_ERROR_LOG=/dev/stdout
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
@@ -69,10 +70,11 @@ EXPOSE 8080
 EXPOSE 80
 
 # Start Nginx in the foreground
-CMD ["nginx", "-g", "daemon off;"]
+#CMD ["nginx", "-g", "daemon off;"]
 
 # Define the command to run the application
-CMD ["java", "-jar", "pipeline.jar"]
+#CMD ["java", "-jar", "pipeline.jar"]
 
 # Run the Java application in an infinite loop to keep the container running
-CMD ["sh", "-c", "while :; do sleep 60; done"]
+#CMD ["sh", "-c", "while :; do sleep 60; done"]
+CMD service nginx start && java -jar pipeline.jar && while :; do sleep 60; done
