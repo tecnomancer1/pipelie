@@ -111,6 +111,9 @@ jobs:
       - name: Run Container
         run: docker run -d --rm -p 8080:8080 -p 80:80 --name pipeline tecnomancer1/pipeline:latest
 
+      - name: Print Container Logs
+        run: docker logs pipeline
+
       - name: List Running Containers
         run: docker ps
 
