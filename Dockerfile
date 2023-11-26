@@ -65,6 +65,9 @@ COPY --from=build /usr/src/app/target /usr/src/app/target
 EXPOSE 8080
 EXPOSE 80
 
+# Start Nginx in the foreground
+CMD ["nginx", "-g", "daemon off;"]
+
 # Define the command to run the application
 CMD ["java", "-jar", "pipeline.jar"]
 
