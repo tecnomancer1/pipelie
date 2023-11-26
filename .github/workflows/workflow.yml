@@ -111,8 +111,11 @@ jobs:
       - name: Run Container
         run: docker run -d --rm -p 8080:8080 -p 80:80 --name pipeline tecnomancer1/pipeline:latest
 
-      - name: Print Container Logs
-        run: docker logs pipeline
+      - name: Check supervisord log
+        run: docker exec $(docker ps -aq | head -n 1) cat /var/log/supervisord/supervisord.log
+
+      - name: Check nginx error log
+        run: docker exec $(docker ps -aq | head -n 1) cat /var/log/nginx/error.log
 
       - name: List Running Containers
         run: docker ps
