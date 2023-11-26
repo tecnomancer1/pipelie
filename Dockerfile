@@ -37,7 +37,7 @@ RUN set -eux \
     && sed -i '/localpkg_gpgcheck=1/d' /etc/dnf/dnf.conf
 
 # Install essential utilities
-RUN dnf install -y procps net-tools
+RUN dnf install -y procps net-tools supervisor
 
 # Install Nginx
 RUN dnf install -y nginx
