@@ -37,7 +37,7 @@ RUN set -eux \
     && sed -i '/localpkg_gpgcheck=1/d' /etc/dnf/dnf.conf
 
 # Install essential utilities
-RUN dnf install -y procps net-tools nginx
+RUN dnf install -y procps net-tools nginx findutils
 
 # Download and install supervisord
 RUN curl -L https://bootstrap.pypa.io/get-pip.py | python3 && \
