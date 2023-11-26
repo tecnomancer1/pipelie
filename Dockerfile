@@ -85,7 +85,4 @@ EXPOSE 80
 # Run the Java application in an infinite loop to keep the container running
 #CMD ["sh", "-c", "while :; do sleep 60; done"]
 
-# Add this line to your Dockerfile
-RUN type supervisord
-
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+CMD ["/usr/local/bin/supervisord", "-c", "/etc/supervisord.conf"]
