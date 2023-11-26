@@ -111,9 +111,6 @@ jobs:
       - name: Run Container
         run: docker run -d --rm -p 8080:8080 -p 80:80 --name pipeline tecnomancer1/pipeline:latest
 
-      - name: Log find
-        run: docker exec $(docker ps -aq | head -n 1) find / -name supervisord.log
-
       - name: Check supervisord log
         run: docker exec $(docker ps -aq | head -n 1) cat /var/log/supervisord/supervisord.log
 
