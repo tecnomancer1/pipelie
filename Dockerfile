@@ -39,6 +39,11 @@ RUN set -eux \
 # Install essential utilities
 RUN dnf install -y procps net-tools nginx findutils
 
+# Create the log directory for supervisord
+RUN mkdir -p /var/log/supervisord \
+    && touch /var/log/supervisord/supervisord.log \
+    && chmod 777 /var/log/supervisord /var/log/supervisord/supervisord.log
+
 # Download and install supervisord
 RUN curl -L https://bootstrap.pypa.io/get-pip.py | python3 && \
     pip3 install supervisor
