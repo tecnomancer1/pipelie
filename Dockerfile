@@ -66,12 +66,10 @@ EXPOSE 8080
 EXPOSE 80
 
 # Start Nginx in the foreground
-#CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
 
 # Define the command to run the application
-#CMD ["java", "-jar", "pipeline.jar"]
-
-CMD service nginx start && java -jar pipeline.jar
+CMD ["java", "-jar", "pipeline.jar"]
 
 # Run the Java application in an infinite loop to keep the container running
 CMD ["sh", "-c", "while :; do sleep 60; done"]
