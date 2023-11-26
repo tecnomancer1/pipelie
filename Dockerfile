@@ -86,6 +86,6 @@ EXPOSE 80
 #CMD ["sh", "-c", "while :; do sleep 60; done"]
 
 # Add this line to your Dockerfile
-RUN which supervisord
+RUN RUN command -v supervisord
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
