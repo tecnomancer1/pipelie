@@ -65,16 +65,20 @@ COPY --from=build /usr/src/app/target/pipeline.jar ./pipeline.jar
 # Copy the target directory
 COPY --from=build /usr/src/app/target /usr/src/app/target
 
+# Copy the supervisord.conf file
+COPY supervisord.conf /etc/supervisord.conf
+
 # Expose the port the app runs on
 EXPOSE 8080
 EXPOSE 80
 
 # Start Nginx in the foreground
-CMD ["nginx", "-g", "daemon off;"]
+#CMD ["nginx", "-g", "daemon off;"]
 
 # Define the command to run the application
-CMD ["java", "-jar", "pipeline.jar"]
+#CMD ["java", "-jar", "pipeline.jar"]
 
 # Run the Java application in an infinite loop to keep the container running
-CMD ["sh", "-c", "while :; do sleep 60; done"]
-#CMD service nginx start && java -jar pipeline.jar && while :; do sleep 60; done
+#CMD ["sh", "-c", "while :; do sleep 60; done"]
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
