@@ -48,6 +48,9 @@ RUN rm -f /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 # Copy the custom Nginx configuration
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 
+# Copy the index.html file to the Nginx HTML directory
+COPY src/main/resources/static/index.html /usr/share/nginx/html/
+
 # Set environment variables
 ENV LANG C.UTF-8
 ENV JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto
