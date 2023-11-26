@@ -109,7 +109,7 @@ jobs:
         run: docker run --rm tecnomancer1/pipeline:latest ls /usr/src/app/target
 
       - name: Run Container
-        run: docker run -d --rm -p --name pipeline 8080:8080 p 80:80 tecnomancer1/pipeline:latest
+        run: docker run -d --rm -p 8080:8080 -p 80:80 --name pipeline tecnomancer1/pipeline:latest
 
       - name: List Running Containers
         run: docker ps
