@@ -74,4 +74,4 @@ EXPOSE 80
 CMD service nginx start && java -jar pipeline.jar
 
 # Run the Java application in an infinite loop to keep the container running
-#CMD ["sh", "-c", "while :; do sleep 60; done"]
+CMD ["sh", "-c", "while :; do sleep 60; done"]
