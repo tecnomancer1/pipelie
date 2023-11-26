@@ -109,13 +109,13 @@ jobs:
         run: docker run --rm tecnomancer1/pipeline:latest ls /usr/src/app/target
 
       - name: Run Container
-        run: docker run -d --rm -p  8080:8080 tecnomancer1/pipeline:latest
+        run: docker run -d --rm -p --name pipeline 8080:8080 p 80:80 tecnomancer1/pipeline:latest
 
       - name: List Running Containers
         run: docker ps
 
-     # - name: Check JAR file inside container
-     #   run: docker exec $(docker ps -aq | head -n 1) ls /usr/src/app/target
+      - name: Check JAR file inside container
+        run: docker exec $(docker ps -aq | head -n 1) ls /usr/src/app/target
 
       - name: List Processes in the Running Containers
         run: docker exec $(docker ps -aq | head -n 1) ps aux
