@@ -114,8 +114,8 @@ jobs:
       - name: List Running Containers
         run: docker ps
 
-      - name: Check JAR file inside container
-        run: docker exec $(docker ps -aq | head -n 1) ls /usr/src/app/target
+     # - name: Check JAR file inside container
+     #   run: docker exec $(docker ps -aq | head -n 1) ls /usr/src/app/target
 
       - name: List Processes in the Running Containers
         run: docker exec $(docker ps -aq | head -n 1) ps aux
