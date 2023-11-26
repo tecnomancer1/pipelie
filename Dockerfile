@@ -37,10 +37,14 @@ RUN set -eux \
     && sed -i '/localpkg_gpgcheck=1/d' /etc/dnf/dnf.conf
 
 # Install essential utilities
-RUN dnf install -y procps net-tools supervisor
+RUN dnf install -y procps net-tools nginx
+
+# Download and install supervisord
+RUN curl -L https://bootstrap.pypa.io/get-pip.py | python3 && \
+    pip3 install supervisor
 
 # Install Nginx
-RUN dnf install -y nginx
+#RUN dnf install -y nginx
 
 # Remove the default Nginx configuration
 RUN rm -f /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
