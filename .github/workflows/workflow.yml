@@ -26,6 +26,19 @@ jobs:
       - name: Code checkout
         # Checks-out your repository under $GITHUB_WORKSPACE, so job can access it
         uses: actions/checkout@v3
+      - id: honeycomb-setup-recording
+        uses: honeycombio/gha-buildevents@v1
+        with:
+          # Required: a Honeycomb API key - needed to send traces.
+          #   must be set in your GitHub repository under Settings > Secrets > Actions
+          apikey: ${{ secrets.BUILDEVENT_APIKEY }}
+
+          # Required: the Honeycomb dataset to send traces to
+          dataset: buildevents
+
+          # Required: the job status, this will be used in the post section and sent
+          #   as status of the trace. Must always be ${{ job.status }}.
+          job-status: ${{ job.status }}
       - name: Java setup
         uses: actions/setup-java@v3
         with:
